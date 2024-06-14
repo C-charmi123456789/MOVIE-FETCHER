@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Cloud Peer Project by Charmi</title>
+    <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
+</head>
+<body class="bg-gray-100">
+    <header class="bg-pink-500 text-white py-4 grid justify-items-center w-1/2 mx-auto rounded-xl mt-10">
+        <h1 class="text-3xl text-center font-bold">Fetch Movies data</h1>
+        <h1 class="text-xl text-center font-bold">Cloud and Serverless project by Thirukkovalluri Charmi Padmaja - 2100030727</h1>
+        <form class="flex justify-center mt-4" method="POST">
+            <input type="text" name="query" placeholder="Search for any movie" class="border text-black border-gray-300 rounded p-2 mr-2">
+            <input type="submit" value="Search" class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">
+        </form>
+    </header>
+    <main class="container mx-auto px-4 py-8">
+        <div class="flex flex-col md:flex-row">
+            <div class="w-full">
+                <h2 class="text-2xl font-bold mb-4 text-center">Movies Results</h2>
+                <ul id="movies-list" class="space-y-4">
+                    {% for movie in movies_data.results %}
+                        <div class="max-w-md mx-auto bg-white rounded-xl shadow-md overflow-hidden md:max-w-2xl m-3">
+                            <div class="md:flex">
+                                <div class="md:flex-shrink-0">
+                                    <img class="h-48 w-full object-cover md:w-48" src="{{ movie.image_url }}" alt="{{ movie.name }}">
+                                </div>
+                                <div class="p-8">
+                                    <div class="uppercase tracking-wide text-sm text-indigo-500 font-semibold">{{ movie.name }}</div>
+                                    <a href="#" class="block mt-1 text-lg leading-tight font-medium text-black hover:underline">{{ movie.year }}</a>
+                                    <p class="mt-2 text-gray-500">relevance : {{ movie.relevance }}</p>
+                                </div>
+                            </div>
+                        </div>
+                    {% endfor %}
+                </ul>
+            </div>
+        </div>
+    </main>
+</body>
+</html>
